@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "capiv"
+version = "0.1.0"
+description = "Benchmark an oil company's wells against Argentina's public Capitulo IV production dataset, with a Claude agent that picks parameterised comparisons instead of writing SQL."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Lucas Burriel" }]
+requires-python = ">=3.11"
+dependencies = [
+    "duckdb>=1.1",
+    "pandas>=2.0",
+    "matplotlib>=3.8",
+    "claude-agent-sdk>=0.2.100",
+]
+keywords = ["oil-and-gas", "vaca-muerta", "type-curve", "benchmark", "duckdb", "claude", "agent", "mcp"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+capiv = "capiv.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/LucasBurriel/capiv"
+
+[tool.setuptools.packages.find]
+include = ["capiv*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
